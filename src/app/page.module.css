@@ -1,167 +1,940 @@
-.page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
+/* easyFood Marketplace Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   font-family: var(--font-geist-sans);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
 }
 
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
-}
-
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
+.title {
+  font-size: 3rem;
   margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
+  color: #2d3748;
+  font-weight: 700;
 }
 
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
-}
-
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.ctas {
-  display: flex;
-  gap: 16px;
-}
-
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
+.subtitle {
+  font-size: 1.2rem;
+  color: #4a5568;
+  margin: 10px 0 15px 0;
   font-weight: 500;
 }
 
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
+.locationBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 158px;
+.locationIcon {
+  font-size: 1.2rem;
+}
+
+.locationInput {
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 25px;
+  font-size: 1rem;
+  width: 300px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+.locationInput:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.navBtn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  background: white;
+  color: #4a5568;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.navBtn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Search and Filter Styles */
+.searchFilters {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.searchBar {
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  transition: border-color 0.3s ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.categoryFilters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.categoryBtn {
+  padding: 10px 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  background: white;
+  color: #4a5568;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.categoryBtn:hover {
+  border-color: #667eea;
+  transform: translateY(-1px);
+}
+
+.categoryBtn.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.resultsHeader {
+  margin-bottom: 20px;
+}
+
+.resultsHeader h2 {
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Food Cards Grid */
+.foodGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+}
+
+.foodCard {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.foodCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.foodImage {
+  position: relative;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 30px;
+  text-align: center;
+}
+
+.foodEmoji {
+  font-size: 4rem;
+  display: block;
+}
+
+.discountBadge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #e53e3e;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.foodContent {
+  padding: 25px;
+}
+
+.foodTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 10px;
+}
+
+.foodDescription {
+  color: #718096;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.shopInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.shopName {
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.shopDistance {
+  color: #667eea;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.priceInfo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.originalPrice {
+  text-decoration: line-through;
+  color: #a0aec0;
+  font-size: 1rem;
+}
+
+.discountedPrice {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #48bb78;
+}
+
+.pickupInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: #edf2f7;
+  color: #4a5568;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.reserveBtn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reserveBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.main {
+  margin-bottom: 30px;
+}
+
+/* Shops Section */
+.shopsSection h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.shopsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.shopCard {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.shopCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.shopHeader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.shopEmoji {
+  font-size: 3rem;
+}
+
+.shopDetails h3 {
+  margin: 0 0 5px 0;
+  color: #2d3748;
+  font-size: 1.3rem;
+}
+
+.shopType {
+  color: #718096;
+  margin: 0 0 8px 0;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.rating {
+  color: #f6ad55;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.shopAddress {
+  color: #4a5568;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.shopDistance {
+  color: #667eea;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.shopActions {
+  display: flex;
+  gap: 10px;
+}
+
+.viewMenuBtn {
+  flex: 1;
+  padding: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.viewMenuBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.callBtn {
+  padding: 12px 16px;
+  background: #48bb78;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.callBtn:hover {
+  background: #38a169;
+  transform: translateY(-2px);
+}
+
+/* Business Section */
+.businessSection {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.businessHero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.businessHero h2 {
+  font-size: 2.5rem;
+  color: #2d3748;
+  margin-bottom: 15px;
+}
+
+.businessHero p {
+  font-size: 1.2rem;
+  color: #718096;
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.benefitCard {
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  transition: all 0.3s ease;
+}
+
+.benefitCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.benefitIcon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.benefitCard h3 {
+  color: #2d3748;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.benefitCard p {
+  color: #718096;
+  line-height: 1.6;
+}
+
+.signupForm {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 15px;
+  border-left: 5px solid #667eea;
+}
+
+.signupForm h3 {
+  color: #2d3748;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  align-items: end;
+}
+
+.input, .select {
+  padding: 15px 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background: white;
+}
+
+.input:focus, .select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.signupBtn {
+  grid-column: 1 / -1;
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signupBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
 }
 
 .footer {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.footer img {
-  flex-shrink: 0;
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
   }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+  
+  .title {
+    font-size: 2.5rem;
   }
-
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+  
+  .locationInput {
+    width: 100%;
+    max-width: 280px;
   }
-}
-
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
-
-  .main {
+  
+  .nav {
+    flex-direction: column;
     align-items: center;
   }
-
-  .main ol {
-    text-align: center;
+  
+  .navBtn {
+    width: 100%;
+    max-width: 300px;
   }
-
-  .ctas {
+  
+  .categoryFilters {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  .categoryBtn {
+    flex-shrink: 0;
+  }
+  
+  .foodGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .foodCard {
+    margin-bottom: 20px;
+  }
+  
+  .shopsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form {
+    grid-template-columns: 1fr;
+  }
+  
+  .businessHero h2 {
+    font-size: 2rem;
+  }
+  
+  .shopActions {
     flex-direction: column;
   }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
+  
+  .priceInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
   }
+}
 
-  a.secondary {
-    min-width: auto;
+@media (max-width: 480px) {
+  .header {
+    padding: 20px;
   }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .searchFilters {
+    padding: 20px;
+  }
+  
+  .foodContent {
+    padding: 20px;
+  }
+  
+  .shopCard {
+    padding: 20px;
+  }
+  
+  .businessSection {
+    padding: 25px;
+  }
+  
+  .benefitCard {
+    padding: 20px 15px;
+  }
+}
 
-  .footer {
-    flex-wrap: wrap;
+.addItemForm {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  border-left: 5px solid #667eea;
+}
+
+.addItemForm h2 {
+  margin-top: 0;
+  color: #2d3748;
+  font-size: 1.5rem;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  align-items: end;
+}
+
+.input, .select {
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background: white;
+}
+
+.input:focus, .select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.addBtn {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.addBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.itemsList h2 {
+  color: #2d3748;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.emptyState {
+  text-align: center;
+  color: #718096;
+  font-size: 1.1rem;
+  padding: 40px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  border: 2px dashed #cbd5e0;
+}
+
+.itemsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.itemCard {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-left: 5px solid #e2e8f0;
+}
+
+.itemCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.itemCard.fresh {
+  border-left-color: #48bb78;
+  background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+}
+
+.itemCard.warning {
+  border-left-color: #ed8936;
+  background: linear-gradient(135deg, #fffaf0 0%, #fbd38d 100%);
+}
+
+.itemCard.urgent {
+  border-left-color: #f56565;
+  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+}
+
+.itemCard.expired {
+  border-left-color: #e53e3e;
+  background: linear-gradient(135deg, #fff5f5 0%, #feb2b2 100%);
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.itemHeader h3 {
+  margin: 0;
+  color: #2d3748;
+  font-size: 1.2rem;
+}
+
+.removeBtn {
+  background: #e53e3e;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.removeBtn:hover {
+  background: #c53030;
+  transform: scale(1.1);
+}
+
+.category {
+  background: #667eea;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+}
+
+.quantity {
+  color: #4a5568;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.expiry {
+  color: #2d3748;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.daysLeft {
+  font-weight: 600;
+  color: #667eea;
+}
+
+.expiredTitle {
+  color: #e53e3e;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.recipeIntro {
+  color: #4a5568;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.recipesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.recipeCard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.recipeCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.recipeCard h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.recipeBtn {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+
+.recipeBtn:hover {
+  background: #f7fafc;
+  transform: scale(1.05);
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: #4a5568;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .form {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav {
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+  }
+  
+  .navBtn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .itemsGrid, .recipesGrid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+  .container {
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  }
+  
+  .header, .main, .addItemForm {
+    background: #2d3748;
+    color: #e2e8f0;
+  }
+  
+  .title, .itemHeader h3 {
+    color: #e2e8f0;
+  }
+  
+  .subtitle, .quantity, .expiry {
+    color: #a0aec0;
+  }
+  
+  .navBtn {
+    background: #4a5568;
+    color: #e2e8f0;
+  }
+  
+  .itemCard {
+    background: #4a5568;
+  }
+  
+  .input, .select {
+    background: #4a5568;
+    color: #e2e8f0;
+    border-color: #718096;
+  }
+  
+  .emptyState {
+    background: #4a5568;
+    color: #a0aec0;
   }
 }
